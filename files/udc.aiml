@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+    <category>
+        <pattern>*</pattern>
+        <template>I have no answer for that. Try to ask something different</template>
+    </category>
+    <!-- Ð¿ÑÐ¸Ð²ÐµÑÑÑÐ²Ð¸Ðµ -->
+    <category>
+        <pattern>HELLO</pattern>
+        <template>
+            <random>
+                <li>Hello, what is your name?</li>
+                <li>Hi, what is your name?</li>
+                <li>Hey, what's your name?</li>
+                <li>Hey, what's your name, budy?</li>
+            </random>
+        </template>
+    </category>
+    <category>
+        <pattern>HI</pattern>
+        <template><srai>HELLO</srai></template>
+    </category>
+    <!-- ÐÐ¾Ð½ÐµÑ Ð¿ÑÐ¸Ð²ÐµÑÑÑÐ²Ð¸Ñ -->
+    <!-- Ð Ð°Ð±Ð¾ÑÐ° Ñ Ð¸Ð¼ÐµÐ½ÐµÐ¼ -->
+    <category>
+        <pattern>MY NAME IS *</pattern>
+        
+        <template>
+            <think>
+            <set name="firstName"><star index ="1"/></set>
+            </think>
+            <random>
+                <li>Nice to meet you, <get name="firstName"><star index ="1"/></get><br/>
+                    Do you studing programming?
+                    <button>
+                        <text>Yes, I do</text>
+                        <postback>I do programming</postback>
+                    </button>
+                    <button>
+                        <text>No I do not</text>
+                        <postback>How to begin</postback>
+                    </button>
+                
+                </li>
+                <li>
+                    Glad to meet you, <get name="firstName"><star index ="1"/></get><br/>
+                    Do you studing programming?
+                    <button>
+                        <text>Yes, I do</text>
+                        <postback>I do programming</postback>
+                    </button>
+                    <button>
+                        <text>No I do not</text>
+                        <postback>How to begin</postback>
+                    </button>
+                </li>
+                <li><get name="firstName"><star index ="1"/></get>, Welcome on board, <br/>
+                    Do you studing programming?
+                        <button>
+                            <text>Yes, I do</text>
+                            <postback>I do</postback>
+                        </button>
+                        <button>
+                        <text>No I do not</text>
+                        <postback>How to begin</postback>
+                    </button>
+                </li>
+            </random>
+            
+        </template>
+    </category>
+    <category>
+        <pattern>CALL ME *</pattern>
+        <template><srai>MY NAME IS <star/></srai></template>
+    </category>
+    <category>
+        <pattern>I am *</pattern>
+        <template><srai>MY NAME IS <star/></srai></template>
+    </category>
+    <category>
+        <pattern>What is my name</pattern>
+        <template><get name="firstName"/>, how you could forget your name?)</template>
+    </category>
+    
+  
+    
+    <!-- ÑÐ°Ð±Ð¾ÑÐ° Ñ Ð¼Ð¾ÑÐ¸Ð²Ð°ÑÐ¸ÐµÐ¹ -->
+      <category>
+        <pattern>I want to study programming</pattern>
+        <template><srai>How to Begin</srai></template>
+    </category>
+    <category>
+        <pattern>I do programming</pattern>
+        <template>
+            What is your programming language?
+            <button>
+                <text>C++</text>
+                <postback>I am study C++
+                <set name="programmingLanguagee">C++</set>
+                </postback>
+                
+            </button>
+            <button>
+                <text>JavaScript</text>
+                <postback>I am study JavaScript
+                
+                </postback>
+            </button>
+        </template>
+    </category>
+    <category>
+        <pattern>I am study *</pattern>
+        <template>
+            <think>
+            <set name="programmingLanguagee"><star index ="1"/></set>
+            </think>
+                <condition name="programmingLanguage">
+                    <li programmingLanguage="JavaScript">Oh, I love JavaScript.</li>
+                    <li>Come on, you have to start programming on JavaScript</li>
+                </condition> 
+        </template>
+    </category>
+    <category>
+        <pattern>why JavaScript </pattern>
+        <template>
+            Because with Node.js you can do with Javascript all you want and run your program everywhere.
+        </template>
+    </category>
+    <category>
+        <pattern>How to begin</pattern>
+        <template>
+            You have posibility to learn best programming language
+            <button>
+                <text>Click here to start learning JS</text>
+                <url>https://developer.mozilla.org/en/docs/Web/JavaScript</url>
+            </button>
+        </template>
+    </category>
+    <category>
+        <pattern>I do not want to study</pattern>
+        <template>
+            Your dreams will never comes true without JavaScript!<br/>
+            do not be stupid, click the link below.
+            Feel free to ask me something to motivate you)
+        </template>
+    </category>
+    <category>
+        <pattern>DONE</pattern>
+        <template>
+            Good job, let me test your knowlage <br/>
+            What's the resalt of the following code 
+            <code>console.log('5' + - '2')</code>
+            <button>
+                <text>3</text>
+                <postback>wrong</postback>
+            </button>
+            <button>
+                <text>'52'
+                </text>
+                <postback>wrong</postback>
+            </button>
+            <button>
+                <text>'5-2'</text>
+                <postback>congrats</postback>
+            </button>
+        </template>
+    </category>
+    <category>
+        <pattern>congrats</pattern>
+        <template>Congratulations, from this moment you are new JavaScript ninja</template>
+    </category>
+    <category>
+        <pattern>WRONG</pattern>
+        <template>
+            Oh, check this tutorials one more time
+            <button>
+                <text>JS tutorials</text>
+                <url>https://developer.mozilla.org/en-US/docs/Web/JavaScript</url>
+            </button>
+            <button>
+                <text>Try test again</text>
+                <postback>done</postback>
+            </button>
+        </template>
+    </category>
+    <category>
+        <pattern>MOTIVATE _</pattern>
+        <template><srai>MOTIVATION</srai></template>
+    </category>
+    <category>
+        <pattern>MOTIVATION</pattern>
+        <template>
+            Check it out)
+            <button>
+                <text>That's a portion of motivation for you)</text>
+                <url>
+                    <random>
+                        <li>https://www.youtube.com/watch?v=zX87bKmmbak</li>
+                        <li>https://www.youtube.com/watch?v=egQH4vM1q1A</li>
+                        <li>https://www.youtube.com/watch?v=nKIu9yen5nc</li>
+                        <li>https://www.youtube.com/watch?v=xfBWk4nw440</li>
+                        <li>https://www.youtube.com/watch?v=zX87bKmmbak</li>
+                    </random>
+                </url>
+            </button>
+        </template>
+    </category>
+    <category>
+        <pattern>_ COLOR</pattern>
+        <template>Are you american?</template>
+    </category>
+    
+</aiml>
